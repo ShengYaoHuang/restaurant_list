@@ -32,7 +32,7 @@ app.get('/search', (req, res) => {
   const restaurants = restaurantList.results.filter(restaurant => {
     return restaurant.name.toLocaleLowerCase().includes(keyword.toLowerCase())
   })
-  res.render('index', { restaurants: restaurants, keyword: keyword })
+  res.render('index', { restaurants, keyword })
 })
 
 app.get('/restaurants/new', (req, res) => {
@@ -41,7 +41,7 @@ app.get('/restaurants/new', (req, res) => {
 
 app.get('/restaurants/:restaurant_id', (req, res) => {
   const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
-  res.render('show', { restaurant: restaurant })
+  res.render('show', { restaurant })
 })
 
 app.listen(port, () => {
