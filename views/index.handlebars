@@ -37,10 +37,20 @@
               <div class="restaurant-category mb-1">
                 <i class="fas fa-utensils pr-2"></i> {{this.category}}
               </div>
-              <span class="badge badge-pill badge-danger font-weight-normal">
-                {{this.rating}}
-                <i class="fas fa-star fa-xs"></i>
-              </span>
+              <div class="row justify-content-between">
+                <div class="left badge ml-2">
+                  <span class="badge badge-pill badge-danger font-weight-normal">
+                    {{this.rating}}
+                    <i class="fas fa-star"></i>
+                  </span>
+                </div>
+                <div class="right part mr-2">
+                  <a href="./restaurants/{{ this._id }}/edit" class="btn btn-dark">編輯</a>
+                  <form action="./restaurants/{{this._id}}/delete" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">刪除</button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </a>
