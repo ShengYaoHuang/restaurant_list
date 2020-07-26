@@ -1,0 +1,60 @@
+<div class="container m-5">
+  <div class="row">
+    <form action="/restaurants" method="POST">
+      <div class="alert alert-warning" role="alert">
+        新 增 餐 廳
+        <i class="fas fa-pencil-alt"></i>
+      </div>
+      <div class="form-group">
+        <label for="name">餐廳中文名稱</label>
+        <input type="text" class="form-control" id="name" placeholder="請輸入餐廳中文名稱" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="name_en">餐廳英文名稱</label>
+        <input type="text" class="form-control" id="name_en" placeholder="請輸入餐廳英文名稱" name="name＿en" required>
+      </div>
+      <div class="form-group">
+        <label for="category">餐廳類別</label>
+        <select class="form-control" id="category" name="category">
+          <option value="美式餐廳">美式餐廳</option>
+          <option value="日本料理">日本料理</option>
+          <option value="義式餐廳">義式餐廳</option>
+          <option value="中東料理">中東料理</option>
+          <option value="中式餐廳">中式餐廳</option>
+          <option value="泰式料理">泰式料理</option>
+          <option value="越南料理">越南料理</option>
+          <option value="飲料店">飲料店</option>
+          <option value="咖啡">咖啡</option>
+          <option value="酒吧">酒吧</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="image">餐廳圖片</label>
+        <input type="text" class="form-control" id="image" placeholder="請輸入餐廳圖片網址 https://..." name="image" required>
+      </div>
+      <div class="form-group">
+        <label for="location">餐廳地址</label>
+        <input type="text" class="form-control" id="location" placeholder="請輸入餐廳地址" name="location" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">餐廳電話</label>
+        <input type="text" class="form-control" id="phone" placeholder="請輸入餐廳電話 02 1234 5678" name="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="google_map">餐廳google地圖連結</label>
+        <input type="text" class="form-control" id="google_map" placeholder="請輸入餐廳google地圖網址" name="google_map"
+          required>
+      </div>
+      <div class="form-group">
+        <label for="rating">餐廳評分 ( 最低 1.0 /最高 5.0 )</label>
+        <input type="text" class=" form-control" id="rating" placeholder="請輸入餐廳評分 1.0 ~ 5.0" name="rating" required>
+      </div>
+      <div class="form-group">
+        <label for="description">餐廳介紹</label>
+        <textarea class="form-control" id="description" rows="3" placeholder="請輸入餐廳介紹" name="description"></textarea>
+      </div>
+      <button type="submit" class="btn btn-info">新增餐廳</button>
+      <a href="/" class="btn btn-secondary ml-5">返回</a>
+    </form>
+  </div>
+</div>

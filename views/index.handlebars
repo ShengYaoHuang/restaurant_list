@@ -21,8 +21,15 @@
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
+        <a href="/restaurants/new" class="text-secondary">
+          <div class="card text-white bg-info mb-3">
+            <div class="card-body row justify-content-center">
+              <h4 class="card-title m-0">新增餐廳<i class="fas fa-pencil-alt ml-3"></i></h4>
+            </div>
+          </div>
+        </a>
         {{#each restaurants}}
-        <a href="/restaurants/{{this.id}}" class="text-secondary">
+        <a href="/restaurants/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body p-3">
