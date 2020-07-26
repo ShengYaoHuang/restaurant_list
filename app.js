@@ -62,12 +62,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => {
-      restaurant.name = req.body.name,
-        restaurant.name_en = req.body.name_en,
-        restaurant.image = req.body.image,
-        restaurant.phone = req.body.phone,
-        restaurant.google_map = req.body.google_map,
-        restaurant.description = req.body.description
+      restaurant = Object.assign(restaurant, req.body)
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))
