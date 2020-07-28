@@ -1,11 +1,13 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const app = express()
-const port = 3000
 const exphbs = require('express-handlebars')
+const methodOverride = require('method-override')
+
 const restaurantList = require('./models/seeds/restaurants.json')
 const Restaurant = require('./models/restaurant')
+
+const app = express()
 
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
@@ -21,10 +23,13 @@ app.set('view engine', 'handlebars')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
   Restaurant.find()
     .lean()
+    // .sort({ _id: 'asc' })
+    .sort({ name: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))
     .catch(error => console.error(error))
 })
@@ -58,7 +63,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => {
@@ -69,7 +74,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
@@ -85,6 +90,6 @@ app.get('/search', (req, res) => {
   res.render('index', { restaurants, keyword })
 })
 
-app.listen(port, () => {
-  console.log(`Express is listening on localhost:${port}`)
+app.listen(3000, () => {
+  console.log(`Express is listening on localhost:3000`)
 })

@@ -39,7 +39,7 @@
         style="max-width: 600px;">
       <div class="bottom">
         <a href="/restaurants/{{ restaurant._id }}/edit" class="btn btn-dark  mb-5">編輯</a>
-        <form action="/restaurants/{{restaurant._id}}/delete" method="POST" style="display:inline;">
+        <form action="/restaurants/{{restaurant._id}}?_method=DELETE" method="POST" style="display:inline;">
           <button type="submit" class="btn btn-danger mb-5">刪除</button>
         </form>
         <a href="/" class="btn btn-secondary mb-5">返回首頁</a>
