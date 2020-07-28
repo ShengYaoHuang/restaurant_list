@@ -3,7 +3,7 @@ const router = express.Router()
 
 const Restaurant = require('../../models/restaurant')
 
-router.get('/restaurants/new', (req, res) => {
+router.get('/new', (req, res) => {
   return res.render('new')
 })
 
