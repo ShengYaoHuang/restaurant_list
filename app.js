@@ -4,8 +4,6 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const routes = require('./routes')
 
-const restaurantList = require('./models/seeds/restaurants.json')
-const Restaurant = require('./models/restaurant')
 require('./config/mongoose')
 
 const app = express()
