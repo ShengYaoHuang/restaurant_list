@@ -28,7 +28,7 @@
 > npm install
 
 4. 安裝種子資料
-> node models/seeds/restauranrtSeeder.js
+> npm run seed
 
 5. 執行程式
 > npm run dev
