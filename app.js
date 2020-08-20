@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars')
+const session = require('express-session')
 const methodOverride = require('method-override')
 const routes = require('./routes')
 
@@ -14,6 +15,12 @@ app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
+app.use(session({
+  secret: 'ThisIsRestaurantSecret',
+  resave: false,
+  saveUninitialized: true
+}))
+
 app.use(routes)
 
 app.listen(3000, () => {
