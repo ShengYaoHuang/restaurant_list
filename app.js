@@ -3,13 +3,16 @@ const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
 const flash = require('connect-flash')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const methodOverride = require('method-override')
 const routes = require('./routes')
 const usePassport = require('./config/passport')
 require('./config/mongoose')
-const PORT = process.env.PORT || 3000
 
 
+const PORT = process.env.PORT
 const app = express()
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -19,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
 app.use(session({
-  secret: 'ThisIsRestaurantSecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
