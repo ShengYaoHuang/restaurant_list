@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
   const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
   return Restaurant.create({ name, name_en, category, image, location, phone, google_map, rating, description, userId })
     .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+    .catch(error => res.render('error', { message: 'error.' }))
 })
 
 router.get('/:id', (req, res) => {
@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
   return Restaurant.findOne({ _id, userId })
     .lean()
     .then((restaurant) => res.render('show', { restaurant }))
-    .catch(error => console.log(error))
+    .catch(error => res.render('error', { message: 'error.' }))
 })
 
 router.get('/:id/edit', (req, res) => {
@@ -30,7 +30,7 @@ router.get('/:id/edit', (req, res) => {
   return Restaurant.findOne({ _id, userId })
     .lean()
     .then((restaurant) => res.render('edit', { restaurant }))
-    .catch(error => console.log(error))
+    .catch(error => res.render('error', { message: 'error.' }))
 })
 
 router.put('/:id', (req, res) => {
@@ -51,7 +51,7 @@ router.put('/:id', (req, res) => {
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${_id}`))
-    .catch(error => console.log(error))
+    .catch(error => res.render('error', { message: 'error.' }))
 })
 
 router.delete('/:id', (req, res) => {
@@ -60,7 +60,7 @@ router.delete('/:id', (req, res) => {
   return Restaurant.findOne({ _id, userId })
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+    .catch(error => res.render('error', { message: 'error.' }))
 })
 
 module.exports = router

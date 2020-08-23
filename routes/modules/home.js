@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   Restaurant.find({ userId })
     .lean()
     .then(restaurants => res.render('index', { restaurants }))
-    .catch(error => console.error(error))
+    .catch(error => res.render('error', { message: 'error.' }))
 })
 
 router.get('/search', (req, res) => {
@@ -17,7 +17,7 @@ router.get('/search', (req, res) => {
   Restaurant.find({ name: { $regex: keyword, $options: "i" }, userId })
     .lean()
     .then(restaurants => res.render('index', { restaurants }))
-    .catch(error => console.log(error))
+    .catch(error => res.render(error))
 })
 
 router.get('/sort/:key/:value', (req, res) => {
@@ -34,7 +34,7 @@ router.get('/sort/:key/:value', (req, res) => {
     .lean()
     .sort({ [key]: value })
     .then(restaurants => res.render('index', { restaurants }))
-    .catch(error => console.error(error))
+    .catch(error => res.render('error', { message: 'error.' }))
 
 })
 
